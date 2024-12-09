@@ -1,5 +1,6 @@
 vim.o.colorcolumn = '82'
 
+
 -- Set shellslash to use forward slashes
 -- vim.opt.shellslash = true
 
@@ -13,6 +14,9 @@ vim.o.colorcolumn = '82'
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
 vim.o.shellslash = true
+
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 
 -- vim.opt.guifont = { 'JetBrains Mono', ':h12' }
 vim.opt.guifont = { 'Iosevka', ':h12' }
@@ -102,7 +106,7 @@ vim.opt.shell = 'bash.exe'
 
 -- Enable file size display in netrw
 vim.g.netrw_liststyle = 1 -- Use long listing format
-vim.g.netrw_banner = 0 -- Hide the banner
+vim.g.netrw_banner = 0    -- Hide the banner
 vim.g.netrw_list_cmd = 'ls -FLa'
 -- vim.g.netrw_list_hide = '\\v^\\..*$'  -- Hide dotfiles by default
 -- " Enable blinking together with different cursor shapes for insert/command mode, and cursor highlighting:
