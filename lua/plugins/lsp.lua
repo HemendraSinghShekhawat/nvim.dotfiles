@@ -14,12 +14,12 @@ return {
 					},
 				},
 			},
-			{ "Bilal2453/luvit-meta",                        lazy = true },
+			{ "Bilal2453/luvit-meta", lazy = true },
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-			{ "j-hui/fidget.nvim",                           opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} },
 			{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 
 			{ "elixir-tools/elixir-tools.nvim" },
@@ -33,11 +33,25 @@ return {
 		},
 		config = function()
 			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					typescript = { "prettierd", "prettier" },
+					typescriptreact = { "prettierd", "prettier" },
+					javascript = { "prettierd", "prettier" },
+					javascriptreact = { "prettierd", "prettier" },
+					go = { "goimports", "gofmt" },
+				},
 				format_on_save = {
 					-- These options will be passed to conform.format()
 					timeout_ms = 1000,
 					lsp_format = "fallback",
 				},
+			})
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf, lsp_fallback = true })
+				end,
 			})
 			-- Don't do LSP stuff if we're in Obsidian Edit mode
 			if vim.g.obsidian then
@@ -72,7 +86,7 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities()
 			end
 
-			local lspconfig = require "lspconfig"
+			local lspconfig = require("lspconfig")
 
 			local servers = {
 				bashls = true,
@@ -108,7 +122,7 @@ return {
 				-- Enabled biome formatting, turn off all the other ones generally
 				biome = true,
 				ts_ls = {
-					root_dir = require("lspconfig").util.root_pattern "package.json",
+					root_dir = require("lspconfig").util.root_pattern("package.json"),
 					single_file = false,
 					server_capabilities = {
 						documentFormattingProvider = false,
@@ -182,12 +196,12 @@ return {
 				"stylua",
 				"lua_ls",
 				"delve",
-				"ts_ls"
+				"ts_ls",
 				-- "tailwind-language-server",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
-			require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			for name, config in pairs(servers) do
 				if config == true then
@@ -214,14 +228,14 @@ return {
 						settings = {}
 					end
 
-					local builtin = require "telescope.builtin"
+					local builtin = require("telescope.builtin")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 					vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
 					vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0 })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 					vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0 })
 
 					vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
 					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
@@ -249,14 +263,14 @@ return {
 			-- require("custom.autoformat").setup()
 
 			require("lsp_lines").setup()
-			vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+			vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
 			vim.keymap.set("", "<leader>l", function()
 				local config = vim.diagnostic.config() or {}
 				if config.virtual_text then
-					vim.diagnostic.config { virtual_text = false, virtual_lines = true }
+					vim.diagnostic.config({ virtual_text = false, virtual_lines = true })
 				else
-					vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+					vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 				end
 			end, { desc = "Toggle lsp_lines" })
 

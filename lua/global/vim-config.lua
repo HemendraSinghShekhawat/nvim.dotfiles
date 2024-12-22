@@ -1,8 +1,8 @@
-vim.o.colorcolumn = '82'
-
+vim.o.colorcolumn = "82"
 
 -- Set shellslash to use forward slashes
--- vim.opt.shellslash = true
+vim.opt.shellslash = true
+vim.opt.laststatus = 3
 
 -- Optional: Automatically convert paths when opening files
 -- vim.cmd [[
@@ -19,7 +19,7 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 
 -- vim.opt.guifont = { 'JetBrains Mono', ':h12' }
-vim.opt.guifont = { 'Iosevka', ':h12' }
+vim.opt.guifont = { "Iosevka", ":h12" }
 -- vim.opt.relativenumber = true
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -41,7 +41,7 @@ vim.opt.relativenumber = true
 -- end
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
@@ -49,7 +49,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -62,7 +62,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -77,11 +77,11 @@ vim.opt.splitbelow = true
 --  and `:help 'listchars'`
 vim.opt.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.listchars = { tab = '│ ', trail = '.', nbsp = '␣' }
+vim.opt.listchars = { tab = "│ ", trail = ".", nbsp = "␣" }
 vim.o.tabstop = 2
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
@@ -100,15 +100,15 @@ vim.opt.hlsearch = true
 -- vim.opt.shellxquote = ''
 -- vim.opt.shell = 'pwsh'
 
-vim.opt.shell = 'bash.exe'
+vim.opt.shell = "bash.exe"
 -- vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
 -- vim.opt.shellxquote = ''
 
 -- Enable file size display in netrw
 vim.g.netrw_liststyle = 1 -- Use long listing format
-vim.g.netrw_banner = 0    -- Hide the banner
-vim.g.netrw_list_cmd = 'ls -FLa'
+vim.g.netrw_banner = 0 -- Hide the banner
+vim.g.netrw_list_cmd = "ls -FLa"
 -- vim.g.netrw_list_hide = '\\v^\\..*$'  -- Hide dotfiles by default
 -- " Enable blinking together with different cursor shapes for insert/command mode, and cursor highlighting:
 
-vim.o.guicursor = 'n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20,i:block-blinkwait100-blinkon100-blinkoff100-Cursor/lCursor'
+vim.o.guicursor = "n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20,i:block-blinkwait100-blinkon100-blinkoff100-Cursor/lCursor"
