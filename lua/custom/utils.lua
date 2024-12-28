@@ -133,7 +133,7 @@ function U.select_find_command(executable)
 			"--exclude",
 			"!{.git/*,.svelte-kit/*,target/*,node_modules/*}, lua/user/*",
 			-- "--strip-cwd-prefix",
-		}
+		},
 	}
 
 	if executable ~= 1 then

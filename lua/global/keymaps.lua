@@ -1,10 +1,11 @@
 local set = vim.keymap.set
 local keymapfn = require("custom.keymaps")
 local fn = keymapfn.fn
+local emptyFunction = keymapfn.emptyFn
 
 local keymaps = {
 	{ "n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "nohlsearch" } },
-	{ "n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" } },
+	{ "n", "<leader>de", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" } },
 	{ "n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" } },
 	{ "n", "<leader>l", "$", { desc = "To end of line" } },
 	{ "n", "<leader>h", "_", { desc = "To start of line" } },
@@ -20,9 +21,6 @@ local keymaps = {
 	{ "v", "J", ":m '>+1<CR>gv=gv" },
 	{ "v", "K", ":m '<-2<CR>gv=gv" },
 
-	-- don't ask
-	{ "n", "Y", "yg$" },
-
 	-- better moves
 	{ "n", "J", "mzJ`z" },
 	{ "n", "<C-d>", "<C-d>zz" },
@@ -36,14 +34,17 @@ local keymaps = {
 	{ "n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list" } },
 
 	-- diagnostics
-	{ "n", "]d", fn(vim.diagnostic.jump, { count = 1, float = true }) },
-	{ "n", "[d", fn(vim.diagnostic.jump, { count = -1, float = true }) },
-}
+	{ "n", "]d", fn(vim.diagnostic.goto_next, { float = true }), { desc = "Next diagnostic" } },
+	{ "n", "[d", fn(vim.diagnostic.goto_prev, { float = true }), { desc = "Previous diagnostic" } },
 
--- There are builtin keymaps for this now, but I like that it shows
--- the float when I navigate to the error - so I override them.
--- set("n", "]d", fn(vim.diagnostic.jump, { count = 1, float = true }))
--- set("n", "[d", fn(vim.diagnostic.jump, { count = -1, float = true }))
+	-- My original ideas
+	{ "n", "<leader>b[", "<cmd>bp<CR>", { desc = "Previous buffer" } },
+	{ "n", "<leader>b]", "<cmd>bn<CR>", { desc = "Next buffer" } },
+	{ "n", "<leader>bd", "<cmd>bd<CR>", { desc = "delete buffer" } },
+	{ "n", "-", "<cmd>Oil<CR>", { desc = "directory" } },
+
+	{ "n", "<leader><CR>", "<cmd>luafile %:p<CR>" },
+}
 
 -- set("n", "<space>tt", function()
 -- 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })

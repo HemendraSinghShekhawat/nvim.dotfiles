@@ -1,15 +1,21 @@
-return {             -- Useful plugin to show you pending keybinds.
-	'folke/which-key.nvim',
-	event = 'VeryLazy', -- Sets the loading event to 'VeryLazy'
+return { -- Useful plugin to show you pending keybinds.
+	"folke/which-key.nvim",
+	event = "VeryLazy", -- Sets the loading event to 'VeryLazy'
 	config = function() -- This is the function that runs, AFTER loading
-		require('which-key').setup()
-		require('which-key').add {
-			{ '<leader>c', name = '[C]ode' },
-			{ '<leader>d', name = '[Do,uent' },
-			{ '<leader>r', name = '[R]ename' },
-			{ '<leader>s', name = '[S]earch' },
-			{ '<leader>w', name = '[W]orkspace' },
-		}
+		require("which-key").setup()
+		require("which-key").add({
+			{ "<leader>c", name = "[C]ode" },
+			{ "<leader>d", name = "[D]iagnostics/[D]ocument" },
+			{ "<leader>r", name = "[R]ename" },
+			{ "<leader>s", name = "[S]earch" },
+			{ "<leader>w", name = "[W]orkspace" },
+			{ "<leader>q", name = "[Q]uickfix" },
+			{ "<leader>b", name = "[B]uffer" },
+			{ "<leader>g", name = "[G]it" },
+			{ "<leader>f", name = "[F]ind" },
+			{ "<leader>t", name = "[T]oggle" },
+			{ "<leader>o", name = "[O]rg/[O]pen" },
+		})
 
 		-- Document existing key chains
 		-- require('which-key').register {

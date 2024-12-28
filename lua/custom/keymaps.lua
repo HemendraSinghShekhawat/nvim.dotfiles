@@ -1,5 +1,9 @@
 local M = {}
 
+M.emptyFn = function()
+	return nil
+end
+
 M.fun = function(t)
 	local f = t[1]
 	local args = { unpack(t, 2) }
@@ -10,8 +14,8 @@ end
 
 M.fn = function(f, ...)
 	local args = { ... }
-	return function(...)
-		return f(unpack(args), ...)
+	return function()
+		return f(unpack(args))
 	end
 end
 
