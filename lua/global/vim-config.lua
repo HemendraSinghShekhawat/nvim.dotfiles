@@ -1,19 +1,22 @@
-vim.o.colorcolumn = "82"
+local fn = vim.fn
 
--- Set shellslash to use forward slashes
-vim.opt.shellslash = true
-vim.opt.laststatus = 3
+vim.o.colorcolumn = "82"
 
 -- Optional: Automatically convert paths when opening files
 -- vim.cmd [[
 -- autocmd BufRead,BufNewFile * call setline(1, substitute(getline(1), '\\', '/', 'g'))
 -- ]]
--- vim.o.completeslash = '\\'
 -- set shellescape+=\
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
-vim.o.shellslash = true
+local isWindows = (fn.has("win32") == 1 or fn.has("win64") == 1)
+if isWindows then
+	-- Set shellslash to use forward slashes
+	vim.opt.laststatus = 3
+	vim.o.shellslash = true
+	vim.o.completeslash = "\\"
+end
 
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
