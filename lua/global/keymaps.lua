@@ -28,8 +28,8 @@ local keymaps = {
 	{ "n", "n", "nzzzv" },
 	{ "n", "N", "Nzzzv" },
 
-	{ "n", "<C-k>", "<cmd>cnext<CR>zz" },
-	{ "n", "<C-j>", "<cmd>cprev<CR>zz" },
+	{ "n", "<C-k>", "<cmd>cprev<CR>zz" },
+	{ "n", "<C-j>", "<cmd>cnext<CR>zz" },
 	{ "n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location list" } },
 	{ "n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list" } },
 
