@@ -15,7 +15,7 @@ if isWindows then
 	-- Set shellslash to use forward slashes
 	vim.opt.laststatus = 3
 	vim.o.shellslash = true
-	vim.o.completeslash = "\\"
+	-- vim.o.completeslash = "\\"
 end
 
 vim.o.shiftwidth = 2

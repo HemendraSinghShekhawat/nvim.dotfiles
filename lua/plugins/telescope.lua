@@ -18,22 +18,28 @@ return {
 	},
 	config = function()
 		local actions = require("telescope.actions")
+		local open_with_trouble = require("trouble.sources.telescope").open
+		-- Use this to add more results without clearing the trouble list
+		local add_to_trouble = require("trouble.sources.telescope").add
 		-- The easiest way to use telescope, is to start by doing something like:
 		--  :Telescope help_tags
 		-- Two important keymaps to use while in telescope are:
 		--  - Insert mode: <c-/>
 		--  - Normal mode: ?
-		--
 		require("telescope").setup({
 			defaults = {
 				mappings = {
 					i = {
 						["<c-enter>"] = "to_fuzzy_refine",
 						["<c-y>"] = actions.select_default,
+						["<c-t>"] = open_with_trouble,
+						["<c-a>"] = add_to_trouble,
 						-- ['c-q'] = actions.smart_send_to_gflist + actions.open_qflist
 					},
 					n = {
 						["<c-y>"] = actions.select_default,
+						["<c-t>"] = open_with_trouble,
+						["<c-a>"] = add_to_trouble,
 					},
 				},
 			},
