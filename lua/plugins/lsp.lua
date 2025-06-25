@@ -22,14 +22,10 @@ return {
 			{ "j-hui/fidget.nvim", opts = {} },
 			{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 
-			{ "elixir-tools/elixir-tools.nvim" },
-
-			-- Autoformatting
 			"stevearc/conform.nvim",
 
 			-- Schema information
 			"b0o/SchemaStore.nvim",
-			-- { dir = "~/plugins/ocaml.nvim" },
 		},
 		config = function()
 			require("conform").setup({
@@ -42,7 +38,6 @@ return {
 					go = { "goimports", "gofmt" },
 				},
 				format_on_save = {
-					-- These options will be passed to conform.format()
 					timeout_ms = 1000,
 					lsp_format = "fallback",
 				},
@@ -53,11 +48,6 @@ return {
 					require("conform").format({ bufnr = args.buf, lsp_fallback = true })
 				end,
 			})
-			-- Don't do LSP stuff if we're in Obsidian Edit mode
-			if vim.g.obsidian then
-				return
-			end
-
 			local extend = function(name, key, values)
 				local mod = require(string.format("lspconfig.configs.%s", name))
 				local default = mod.default_config
@@ -89,38 +79,38 @@ return {
 			local lspconfig = require("lspconfig")
 
 			local servers = {
-				bashls = true,
-				gopls = {
-					settings = {
-						gopls = {
-							hints = {
-								assignVariableTypes = true,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
-							},
-						},
-					},
-				},
+				-- bashls = true,
+				-- gopls = {
+				-- 	settings = {
+				-- 		gopls = {
+				-- 			hints = {
+				-- 				assignVariableTypes = true,
+				-- 				compositeLiteralFields = true,
+				-- 				compositeLiteralTypes = true,
+				-- 				constantValues = true,
+				-- 				functionTypeParameters = true,
+				-- 				parameterNames = true,
+				-- 				rangeVariableTypes = true,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 				lua_ls = {
 					server_capabilities = {
 						semanticTokensProvider = vim.NIL,
 					},
 				},
-				rust_analyzer = true,
-				svelte = true,
-				templ = true,
-				taplo = true,
-				intelephense = true,
-
-				pyright = true,
-				mojo = { manual_install = true },
+				-- rust_analyzer = true,
+				-- svelte = true,
+				-- templ = true,
+				-- taplo = true,
+				-- intelephense = true,
+				--
+				-- pyright = true,
+				-- mojo = { manual_install = true },
 
 				-- Enabled biome formatting, turn off all the other ones generally
-				biome = true,
+				-- biome = true,
 				ts_ls = {
 					root_dir = require("lspconfig").util.root_pattern("package.json"),
 					single_file = false,
@@ -152,35 +142,35 @@ return {
 					},
 				},
 
-				ols = {},
-				racket_langserver = { manual_install = true },
-				roc_ls = { manual_install = true },
-				gleam = {
-					manual_install = true,
-				},
-				tailwindcss = {
-					init_options = {
-						userLanguages = {
-							elixir = "phoenix-heex",
-							eruby = "erb",
-							heex = "phoenix-heex",
-						},
-					},
-					filetypes = extend("tailwindcss", "filetypes", { "ocaml.mlx" }),
-					settings = {
-						tailwindCSS = {
-							experimental = {
-								classRegex = {
-									[[class: "([^"]*)]],
-									[[className="([^"]*)]],
-								},
-							},
-							includeLanguages = extend("tailwindcss", "settings.tailwindCSS.includeLanguages", {
-								["ocaml.mlx"] = "html",
-							}),
-						},
-					},
-				},
+				-- ols = {},
+				-- racket_langserver = { manual_install = true },
+				-- roc_ls = { manual_install = true },
+				-- gleam = {
+				-- 	manual_install = true,
+				-- },
+				-- tailwindcss = {
+				-- 	init_options = {
+				-- 		userLanguages = {
+				-- 			elixir = "phoenix-heex",
+				-- 			eruby = "erb",
+				-- 			heex = "phoenix-heex",
+				-- 		},
+				-- 	},
+				-- 	filetypes = extend("tailwindcss", "filetypes", { "ocaml.mlx" }),
+				-- 	settings = {
+				-- 		tailwindCSS = {
+				-- 			experimental = {
+				-- 				classRegex = {
+				-- 					[[class: "([^"]*)]],
+				-- 					[[className="([^"]*)]],
+				-- 				},
+				-- 			},
+				-- 			includeLanguages = extend("tailwindcss", "settings.tailwindCSS.includeLanguages", {
+				-- 				["ocaml.mlx"] = "html",
+				-- 			}),
+				-- 		},
+				-- 	},
+				-- },
 			}
 			local servers_to_install = vim.tbl_filter(function(key)
 				local t = servers[key]
@@ -228,18 +218,14 @@ return {
 						settings = {}
 					end
 
-					local builtin = require("telescope.builtin")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
-					vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0 })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 					vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
 					vim.keymap.set("n", "gh", vim.lsp.buf.hover, { buffer = 0 })
 
 					vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
 					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
-					vim.keymap.set("n", "<space>wd", builtin.lsp_document_symbols, { buffer = 0 })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
@@ -260,8 +246,6 @@ return {
 				end,
 			})
 
-			-- require("custom.autoformat").setup()
-
 			require("lsp_lines").setup()
 			vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 
@@ -273,8 +257,6 @@ return {
 					vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 				end
 			end, { desc = "Toggle lsp_lines" })
-
-			-- require("custom.elixir").setup()
 		end,
 	},
 }

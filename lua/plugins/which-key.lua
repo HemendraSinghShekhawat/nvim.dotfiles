@@ -15,6 +15,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>f", name = "[F]ind" },
 			{ "<leader>t", name = "[T]oggle" },
 			{ "<leader>o", name = "[O]rg/[O]pen" },
+			{ "<leader>u", name = "[U]ser" },
 		})
 
 		-- Document existing key chains

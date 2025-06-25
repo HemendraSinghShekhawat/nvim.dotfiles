@@ -1,7 +1,7 @@
 local set = vim.keymap.set
-local keymapfn = require("custom.keymaps")
-local fn = keymapfn.fn
-local emptyFunction = keymapfn.emptyFn
+-- local keymapfn = require("custom.keymaps")
+-- local fn = keymapfn.fn
+-- local emptyFunction = keymapfn.emptyFn
 
 local keymaps = {
 	{ "n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "nohlsearch" } },
@@ -34,8 +34,8 @@ local keymaps = {
 	{ "n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list" } },
 
 	-- diagnostics
-	{ "n", "]d", fn(vim.diagnostic.goto_next, { float = true }), { desc = "Next diagnostic" } },
-	{ "n", "[d", fn(vim.diagnostic.goto_prev, { float = true }), { desc = "Previous diagnostic" } },
+	-- { "n", "]d", fn(vim.diagnostic.goto_next, { float = true }), { desc = "Next diagnostic" } },
+	-- { "n", "[d", fn(vim.diagnostic.goto_prev, { float = true }), { desc = "Previous diagnostic" } },
 
 	-- My original ideas
 	{ "n", "<leader>b[", "<cmd>bp<CR>", { desc = "Previous buffer" } },
