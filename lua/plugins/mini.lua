@@ -32,7 +32,7 @@ return {
 			-- Define your custom highlight group
 			vim.api.nvim_set_hl(0, "MyStatuslineMode", {
 				fg = "#ffffff", -- white text
-				bg = "#5f00af", -- purple background
+				bg = "#485460", -- gray background
 				bold = true,
 			})
 
@@ -45,7 +45,7 @@ return {
 			end
 
 			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
+			statusline.setup({ use_icons = true })
 		end,
 	},
 }
