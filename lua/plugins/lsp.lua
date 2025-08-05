@@ -38,8 +38,19 @@ return {
 					go = { "goimports", "gofmt" },
 				},
 				format_on_save = {
-					timeout_ms = 1000,
+					timeout_ms = 10000,
 					lsp_format = "fallback",
+				},
+				formatters = {
+					prettier = {
+						command = "npx",
+						args = {
+							"prettier",
+							"--stdin-filepath",
+							"$FILENAME",
+						},
+						stdin = true,
+					},
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -217,7 +228,6 @@ return {
 					if type(settings) ~= "table" then
 						settings = {}
 					end
-
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })

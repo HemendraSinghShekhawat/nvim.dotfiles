@@ -29,8 +29,8 @@ return {
 				underline = true,
 			})
 			vim.cmd.colorscheme("gruber-darker")
-			vim.api.nvim_set_hl(0, "Search", { fg = "#000000", bg = "#7acda3" })
-			vim.api.nvim_set_hl(0, "IncSearch", { fg = "#FFFFFF", bg = "#485460", bold = true })
+			vim.api.nvim_set_hl(0, "Search", { fg = "#FFFFFF", bg = "#485460" })
+			vim.api.nvim_set_hl(0, "IncSearch", { fg = "#e4e4ef", bg = "#FF8200", bold = true })
 		end,
 	},
 }

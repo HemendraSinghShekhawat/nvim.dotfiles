@@ -51,6 +51,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
+
+vim.opt.shellslash = true
 -- vim.opt.shell = 'pwsh'
 vim.opt.shell = "bash.exe"
 -- Enable file size display in netrw

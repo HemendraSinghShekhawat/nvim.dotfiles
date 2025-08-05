@@ -9,23 +9,27 @@ return {
 		explorer = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
+		lazygit = {},
 		notifier = {
 			enabled = true,
 			timeout = 3000,
 		},
 		picker = {
 			enabled = true,
+			layout = { preview = false },
 			win = {
 				-- input window
 				input = {
 					keys = {
 						["<C-y>"] = { "confirm", mode = { "n", "i" } },
+						["<C-t>"] = { "toggle_preview", mode = { "i", "n" } },
 					},
 				},
 			},
 			list = {
 				keys = {
 					["<C-y>"] = "confirm",
+					["<C-t>"] = { "toggle_preview", mode = { "i", "n" } },
 				},
 			},
 		},
@@ -372,7 +376,7 @@ return {
 			desc = "Goto Declaration",
 		},
 		{
-			"gr",
+			"grr",
 			function()
 				Snacks.picker.lsp_references()
 			end,
