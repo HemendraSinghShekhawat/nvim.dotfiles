@@ -174,7 +174,7 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				preset = "none",
-				["<C-c>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-e>"] = { "cancel", "fallback" },
 				["<C-y>"] = { "select_and_accept" },
 

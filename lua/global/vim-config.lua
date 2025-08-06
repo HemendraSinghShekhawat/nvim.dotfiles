@@ -1,4 +1,11 @@
-local fn = vim.fn
+-- credit: https://github.com/SylvanFranklin/.config/blob/main/nvim/init.lua :) --
+vim.opt.winborder = "rounded"
+vim.opt.smartindent = true
+vim.opt.swapfile = false
+vim.opt.termguicolors = true
+vim.opt.incsearch = true
+vim.opt.signcolumn = "yes"
+-- end credit
 
 vim.o.colorcolumn = "82"
 vim.o.shiftwidth = 2
