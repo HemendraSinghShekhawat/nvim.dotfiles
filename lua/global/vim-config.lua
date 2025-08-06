@@ -1,5 +1,5 @@
 -- credit: https://github.com/SylvanFranklin/.config/blob/main/nvim/init.lua :) --
-vim.opt.winborder = "rounded"
+vim.opt.winborder = "single"
 vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.termguicolors = true

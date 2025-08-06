@@ -1,3 +1,20 @@
+local excluded = {
+	"node_modules/",
+	"dist/",
+	".next/",
+	".vite/",
+	".git/",
+	".gitlab/",
+	"build/",
+	"target/",
+	"dadbod_ui/tmp/",
+	"dadbod_ui/dev/",
+
+	"package-lock.json",
+	"pnpm-lock.yaml",
+	"yarn.lock",
+}
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -17,6 +34,7 @@ return {
 		picker = {
 			enabled = true,
 			layout = { preview = false },
+			exclude = excluded,
 			win = {
 				-- input window
 				input = {
