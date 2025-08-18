@@ -174,7 +174,7 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				preset = "none",
-				["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-k>"] = { "show", "show_documentation", "hide_documentation", "cancel" },
 				["<C-e>"] = { "cancel", "fallback" },
 				["<C-y>"] = { "select_and_accept" },
 
@@ -189,7 +189,7 @@ return {
 				["<Tab>"] = { "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "fallback" },
 
-				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+				["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
