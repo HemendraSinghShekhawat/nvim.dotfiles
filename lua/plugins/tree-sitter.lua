@@ -1,13 +1,23 @@
 return { -- Highlight, edit, and navigate code
 	{
-		'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 		config = function()
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
 			---@diagnostic disable-next-line: missing-fields
-			require('nvim-treesitter.configs').setup {
-				ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript' },
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"html",
+					"lua",
+					"markdown",
+					"vim",
+					"vimdoc",
+					"javascript",
+					"typescript",
+				},
 				-- Autoinstall languages that are not installed
 				auto_install = true,
 				highlight = { enable = true },
@@ -32,16 +42,15 @@ return { -- Highlight, edit, and navigate code
 					--     list_definitions = 'gnD', -- mapping to list all definitions in current file
 					--   },
 					-- },
-
 				},
 
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = '<M-w>',    -- maps in normal mode to init the node/scope selection
-						node_incremental = '<M-w>',  -- increment to the upper named parent
-						node_decremental = '<M-W>',  -- decrement to the previous node
-						scope_incremental = '<M-e>', -- increment to the upper scope (as defined in locals.scm)
+						init_selection = "<M-w>", -- maps in normal mode to init the node/scope selection
+						node_incremental = "<M-w>", -- increment to the upper named parent
+						node_decremental = "<M-W>", -- decrement to the previous node
+						scope_incremental = "<M-e>", -- increment to the upper scope (as defined in locals.scm)
 					},
 				},
 
@@ -124,8 +133,7 @@ return { -- Highlight, edit, and navigate code
 				--     -- node_decremental = '<leader>]',
 				--   },
 				-- },
-
-			}
+			})
 
 			-- There are additional nvim-treesitter modules that you can use to interact
 			-- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -136,10 +144,20 @@ return { -- Highlight, edit, and navigate code
 		end,
 	},
 	{
-		'nvim-treesitter/nvim-treesitter-textobjects',
+		"nvim-treesitter/nvim-treesitter-textobjects",
 		config = function()
-			require('nvim-treesitter.configs').setup {
-				ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'javascript', 'typescript' },
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"html",
+					"lua",
+					"markdown",
+					"vim",
+					"vimdoc",
+					"javascript",
+					"typescript",
+				},
 				ignore_install = {},
 				modules = {},
 				TSConfig = {},
@@ -182,10 +200,10 @@ return { -- Highlight, edit, and navigate code
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = '<M-w>',    -- maps in normal mode to init the node/scope selection
-						node_incremental = '<M-w>',  -- increment to the upper named parent
-						node_decremental = '<M-W>',  -- decrement to the previous node
-						scope_incremental = '<M-e>', -- increment to the upper scope (as defined in locals.scm)
+						init_selection = "<M-w>", -- maps in normal mode to init the node/scope selection
+						node_incremental = "<M-w>", -- increment to the upper named parent
+						node_decremental = "<M-W>", -- decrement to the previous node
+						scope_incremental = "<M-e>", -- increment to the upper scope (as defined in locals.scm)
 					},
 				},
 				textobjects = {
@@ -194,22 +212,22 @@ return { -- Highlight, edit, and navigate code
 						set_jumps = true,
 
 						goto_next_start = {
-							[']p'] = '@parameter.inner',
-							[']m'] = '@function.outer',
-							[']]'] = '@class.outer',
+							["]p"] = "@parameter.inner",
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
 						},
 						goto_next_end = {
-							[']M'] = '@function.outer',
-							[']['] = '@class.outer',
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
 						},
 						goto_previous_start = {
-							['[p'] = '@parameter.inner',
-							['[m'] = '@function.outer',
-							['[['] = '@class.outer',
+							["[p"] = "@parameter.inner",
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
 						},
 						goto_previous_end = {
-							['[M'] = '@function.outer',
-							['[]'] = '@class.outer',
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
 						},
 					},
 
@@ -218,17 +236,17 @@ return { -- Highlight, edit, and navigate code
 						lookahead = true,
 
 						keymaps = {
-							['af'] = '@function.outer',
-							['if'] = '@function.inner',
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
 
-							['ac'] = '@conditional.outer',
-							['ic'] = '@conditional.inner',
+							["ac"] = "@conditional.outer",
+							["ic"] = "@conditional.inner",
 
-							['aa'] = '@parameter.outer',
-							['ia'] = '@parameter.inner',
+							["aa"] = "@parameter.outer",
+							["ia"] = "@parameter.inner",
 
-							['av'] = '@variable.outer',
-							['iv'] = '@variable.inner',
+							["av"] = "@variable.outer",
+							["iv"] = "@variable.inner",
 						},
 					},
 
@@ -238,16 +256,68 @@ return { -- Highlight, edit, and navigate code
 						swap_previous = swap_prev,
 					},
 				},
-			}
-			local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+			})
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 			parser_config.org = {
 				install_info = {
-					url = 'https://github.com/milisims/tree-sitter-org',
-					revision = 'main',
-					files = { 'src/parser.c', 'src/scanner.c' },
+					url = "https://github.com/milisims/tree-sitter-org",
+					revision = "main",
+					files = { "src/parser.c", "src/scanner.c" },
 				},
-				filetype = 'org',
+				filetype = "org",
 			}
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context", -- Plugin for sticky context
+		dependencies = { "nvim-treesitter/nvim-treesitter" }, -- Requires treesitter
+		config = function()
+			require("treesitter-context").setup({
+				enable = true, -- Enable the plugin
+				max_lines = 0, -- Set the number of lines before the context disappears (0 for unlimited)
+				min_window_height = 0, -- Minimum window height for the context window to appear
+				line_numbers = false, -- Don't display line numbers in the context window
+				trim_scope = true, -- Trim the context to the current scope
+			})
+			-- Function to disable Treesitter features (highlighting and indentation)
+			local function disable_treesitter()
+				require("treesitter-context").setup({
+					enable = false, -- Enable the plugin
+					max_lines = 0, -- Set the number of lines before the context disappears (0 for unlimited)
+					min_window_height = 0, -- Minimum window height for the context window to appear
+					line_numbers = false, -- Don't display line numbers in the context window
+					trim_scope = true, -- Trim the context to the current scope
+				})
+
+				print("Treesitter features disabled")
+			end
+
+			-- Function to enable Treesitter features (highlighting and indentation)
+			local function enable_treesitter()
+				require("treesitter-context").setup({
+					enable = true, -- Enable the plugin
+					max_lines = 0, -- Set the number of lines before the context disappears (0 for unlimited)
+					min_window_height = 0, -- Minimum window height for the context window to appear
+					line_numbers = false, -- Don't display line numbers in the context window
+					trim_scope = true, -- Trim the context to the current scope
+				})
+				print("Treesitter features enabled")
+			end
+
+			-- Toggle function: if Treesitter is enabled, disable it; if it's disabled, enable it
+			local function toggle_treesitter()
+				if vim.g.treesitter_enabled == nil or vim.g.treesitter_enabled == true then
+					disable_treesitter()
+					vim.g.treesitter_enabled = false
+				else
+					enable_treesitter()
+					vim.g.treesitter_enabled = true
+				end
+			end
+
+			-- Keybinding to toggle Treesitter features
+			vim.keymap.set("n", "<leader>tt", toggle_treesitter, { noremap = true, silent = true })
+			toggle_treesitter()
 		end,
 	},
 }
