@@ -42,15 +42,15 @@ return {
 					lsp_format = "fallback",
 				},
 				formatters = {
-					prettier = {
-						command = "npx",
-						args = {
-							"prettier",
-							"--stdin-filepath",
-							"$FILENAME",
-						},
-						stdin = true,
-					},
+					-- prettier = {
+					-- 	command = "npx",
+					-- 	args = {
+					-- 		"prettier",
+					-- 		"--stdin-filepath",
+					-- 		"$FILENAME",
+					-- 	},
+					-- 	stdin = true,
+					-- },
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {
