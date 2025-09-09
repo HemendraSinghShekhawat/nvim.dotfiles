@@ -60,8 +60,12 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
 vim.opt.shellslash = true
--- vim.opt.shell = 'pwsh'
-vim.opt.shell = "bash.exe"
+-- vim.opt.shell = "pwsh"
+vim.opt.shell = "bash"
+vim.cmd("set shellcmdflag=-c")
+vim.cmd('set shellxquote="')
+-- vim.opt.shellcmdflag = "-c"
+-- vim.opt.shellxquote = '"'
 -- Enable file size display in netrw
 vim.g.netrw_liststyle = 1 -- Use long listing format
 vim.g.netrw_banner = 0 -- Hide the banner
