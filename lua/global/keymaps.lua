@@ -1,4 +1,3 @@
-local set = vim.keymap.set
 -- local keymapfn = require("custom.keymaps")
 -- local fn = keymapfn.fn
 -- local emptyFunction = keymapfn.emptyFn
@@ -44,6 +43,8 @@ local keymaps = {
 	{ "n", "-", "<cmd>Oil<CR>", { desc = "directory" } },
 
 	{ "n", "<leader><CR>", "<cmd>luafile %:p<CR>" },
+	{ "v", ">", ">gz", { desc = "better visual indent forward" } },
+	{ "v", "<", "<gz", { desc = "better visual indent <" } },
 }
 
 -- set("n", "<space>tt", function()
@@ -52,7 +53,7 @@ local keymaps = {
 
 -- vim.api.nvim_set_keymap("n", "<leader>t", "<Plug>PlenaryTestFile", { noremap = false, silent = false })
 
-set("n", "j", function()
+vim.keymap.set("n", "j", function()
 	local count = vim.v.count
 
 	if count == 0 then
@@ -62,7 +63,7 @@ set("n", "j", function()
 	end
 end, { expr = true })
 
-set("n", "k", function()
+vim.keymap.set("n", "k", function()
 	local count = vim.v.count
 
 	if count == 0 then
